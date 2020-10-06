@@ -17,6 +17,10 @@
     
       <!-- Our CSS -->
       <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+
+      <!-- Plotly -->
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     
       <!-- Bootstrap-->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css"
@@ -31,7 +35,8 @@
             <div id="overViewMap"></div>
         </div>
       </div>
-    
+      
+      <div id="plot"></div>
     
       <!-- Leaflet JS -->
       <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -42,8 +47,11 @@
       <!-- API key -->
       <script type="text/javascript" src="../static/js/config.js"></script>
       <!-- Our JavaScript -->
-      <script type="text/javascript" src="../static/js/overViewMap.js"></script>
-    
+      <!-- <script type="text/javascript" src="../static/js/overViewMap.js"></script> -->
+      
+      <script type="text/javascript" src="{{ url_for('static', filename = 'js/overViewMap.js') }}"></script>
+
+      
         <!-- Bootstrap -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

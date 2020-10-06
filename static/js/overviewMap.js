@@ -1,5 +1,4 @@
 // Leaflet map for city level data
-
 // Test Map
 var myMap = L.map("overViewMap", {
   center: [37.09, -95.71],
@@ -59,4 +58,7 @@ for (var i = 0; i < cities.length; i++) {
     // This will make our marker's size proportionate to its population
     radius: markerSize(cities[i].population)
   }).bindPopup("<h1>" + cities[i].name + "</h1> <hr> <h3>Population: " + cities[i].population + "</h3>").addTo(myMap);
-}
+};
+
+
+console.log(2);
