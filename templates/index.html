@@ -45,14 +45,17 @@
       <!-- D3 JavaScript -->
       <script src="https://d3js.org/d3.v6.min.js"></script>
       <!-- API key -->
-      <script type="text/javascript" src="../static/js/config.js"></script>
-      <!-- Our JavaScript -->
-      <!-- <script type="text/javascript" src="../static/js/overViewMap.js"></script> -->
-      
-      <script type="text/javascript" src="{{ url_for('static', filename = 'js/overViewMap.js') }}"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
 
+      <!-- Graphs JavaScript -->
+      <script type="text/javascript" src="{{url_for('static', filename='js/overviewMap.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='js/lineGraph.js')}}"></script>
+
+      <!-- Render Graphs JavaScript -->
+      <script type="text/javascript" src="{{url_for('static', filename='js/makeGraphs.js')}}"></script>
       
-        <!-- Bootstrap -->
+
+      <!-- Bootstrap -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>

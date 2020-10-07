@@ -59,6 +59,3 @@ for (var i = 0; i < cities.length; i++) {
     radius: markerSize(cities[i].population)
   }).bindPopup("<h1>" + cities[i].name + "</h1> <hr> <h3>Population: " + cities[i].population + "</h3>").addTo(myMap);
 };
-
-
-console.log(2);

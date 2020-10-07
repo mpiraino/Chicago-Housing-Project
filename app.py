@@ -34,8 +34,8 @@ def api(neighborhood):
                                         })
         return jsonify(overview.to_dict())
     else:
-        data = pd.read_sql(f"select * from housing inner join tract_to_nb on housing.Census_Tract = tract_to_nb.tract where tract_to_nb.nb = '{nbhd}';", session.bind)
-        return jsonify(data.to_dict())
+        data = pd.read_sql(f"select Longitude, Latitude, Sale_Price, Sale_Year, Bedrooms, Full_Baths from housing inner join tract_to_nb on housing.Census_Tract = tract_to_nb.tract where tract_to_nb.nb = '{nbhd}';", session.bind).dropna()
+        return jsonify(data.to_dict(orient='records'))
 
 
 if __name__ == "__main__":
