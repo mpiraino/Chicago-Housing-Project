@@ -131,3 +131,11 @@ dmypy.json
 
 #ignore config file
 config.js
+CookCountyHomeSales.csv
+
+#ignore Neighborhood package
+gps_to_neighborhood.py
+Neighborhoods_2012_polgons.json
+
+#ignore data
+data/

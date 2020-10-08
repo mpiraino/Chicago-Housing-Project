@@ -8,7 +8,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Leaflet Step-1</title>
+      <title>Chicago Housing Visualization</title>
     
       <!-- Leaflet CSS -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
@@ -17,6 +17,10 @@
     
       <!-- Our CSS -->
       <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+
+
+      <!-- Plotly -->
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     
       <!-- Bootstrap-->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/flatly/bootstrap.min.css"
@@ -24,14 +28,15 @@
     </head>
     
     <body>
-        <h2>Chicago Housing Data Visualization</h2>
+        <h2 style="padding: 2%">Chicago Housing Data Visualization</h2>
       <div class="row">
         <div class="col-12" style= "padding: 2%;">
             <!-- The div that holds our city wide map -->
             <div id="overViewMap"></div>
         </div>
       </div>
-    
+      
+      <div id="plot"></div>
     
       <!-- Leaflet JS -->
       <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -40,11 +45,17 @@
       <!-- D3 JavaScript -->
       <script src="https://d3js.org/d3.v6.min.js"></script>
       <!-- API key -->
-      <script type="text/javascript" src="../static/js/config.js"></script>
-      <!-- Our JavaScript -->
-      <script type="text/javascript" src="../static/js/overViewMap.js"></script>
-    
-        <!-- Bootstrap -->
+      <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
+
+      <!-- Graphs JavaScript -->
+      <script type="text/javascript" src="{{url_for('static', filename='js/overviewMap.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='js/lineGraph.js')}}"></script>
+
+      <!-- Render Graphs JavaScript -->
+      <script type="text/javascript" src="{{url_for('static', filename='js/makeGraphs.js')}}"></script>
+      
+
+      <!-- Bootstrap -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"></script>
