@@ -35,7 +35,7 @@ def api(neighborhood):
                                         })
         return jsonify(overview.to_dict())
     else:
-        data = pd.read_sql(f"select Longitude, Latitude, Sale_Price, Sale_Year, Bedrooms, Full_Baths from housing inner join tract_to_nb on housing.Census_Tract = tract_to_nb.tract where tract_to_nb.nb = '{nbhd}';", session.bind).dropna()
+        data = pd.read_sql(f"select Longitude, Latitude, Sale_Date, Sale_Price, Sale_Year, Age, Address from housing inner join tract_to_nb on housing.Census_Tract = tract_to_nb.tract where tract_to_nb.nb = '{nbhd}';", session.bind).dropna()
         processed_data = data.loc[data['Sale_Price']>1]
         return jsonify(processed_data.to_dict(orient='records'))
 
