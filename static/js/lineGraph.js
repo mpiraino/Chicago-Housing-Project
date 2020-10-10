@@ -2,6 +2,6 @@
 // and makes a line graph of price versus time
 function buildLineGraph(data){
 // code for graph here
-console.log(data.filter(d => d.Sale_Price == 1));
+console.log(data);
 }
 
