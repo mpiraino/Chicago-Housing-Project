@@ -28,14 +28,16 @@ def api(neighborhood):
 
     if nbhd == "ALL":
         data = pd.read_sql("select Sale_Price, Age, nb from housing inner join tract_to_nb on housing.Census_Tract = tract_to_nb.tract;", session.bind)
-        overview = data.groupby('nb').agg({
+        processed_data = data.loc[data['Sale_Price']>1]
+        overview = processed_data.groupby('nb').agg({
                                         'Sale_Price':  'mean',
                                         'Age':'mean'
                                         })
         return jsonify(overview.to_dict())
     else:
         data = pd.read_sql(f"select Longitude, Latitude, Sale_Price, Sale_Year, Bedrooms, Full_Baths from housing inner join tract_to_nb on housing.Census_Tract = tract_to_nb.tract where tract_to_nb.nb = '{nbhd}';", session.bind).dropna()
-        return jsonify(data.to_dict(orient='records'))
+        processed_data = data.loc[data['Sale_Price']>1]
+        return jsonify(processed_data.to_dict(orient='records'))
 
 
 if __name__ == "__main__":
