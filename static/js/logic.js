@@ -1,8 +1,8 @@
 // Creating map object
-var myMap = L.map("chicagomap", {
-    center: [41.8781, -87.6298],
-    zoom: 8
-  });
+var myMap = L.map("overViewMap", {
+  center: [41.8781, -87.6298],
+  zoom: 8
+});
   
   // Adding tile layer
   L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
