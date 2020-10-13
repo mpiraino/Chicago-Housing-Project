@@ -1,5 +1,4 @@
-// function that takes in a neighborhood JSON 
-// and makes a line graph of price versus time
+// Taken from Rui's Branch
 let years =[2013, 2014, 2015, 2016, 2017 , 2018 , 2019]
 function buildLineGraph(data){ 
     avePrice =[]
