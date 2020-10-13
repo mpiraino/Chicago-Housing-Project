@@ -8,7 +8,6 @@ const neighborhoods = ['ANDERSONVILLE',
 'AVALON PARK,CALUMET HEIGHTS',
 'BACK OF THE YARDS',
 'BELMONT CRAGIN,HERMOSA',
-'BELMONT CRAIGIN,HERMOSA',
 'BEVERLY',
 'BRIDGEPORT',
 'BRIGHTON PARK,MCKINLEY PARK',
@@ -92,14 +91,35 @@ function makeNeighborhoodGraphs(nbhd){
     // pulls data from API and runs the functions to make the graphs
     d3.json(`/api/v1/${nbhd}`).then(function(data){
         buildLineGraph(data);
-        //other graphs
+        makeSummary(data);
+        makeHistogram(data);
+        makeNeighborhoodGraphs(data);
     });
 }
+
+function makeSummary(data){
+    var Prices = data.map(d => d.Sale_Price)
+    var count=Prices.length;
+    
+    var priceMean = math.round(math.mean(Prices),2);
+    var priceStd = math.round(math.std(Prices),2);
+    var priceMin = math.min(Prices);
+    var priceMax = math.max(Prices);
+    var panel =d3.select("#nbhd-data");
+    panel.html("");
+    panel.append("ul").style();
+    panel.append("li").text(`Property Count: ${count}`);
+    panel.append("li").text(`Average Sale Price: $${priceMean}`);
+    panel.append("li").text(`Std of Sale Price: $${priceStd}`);
+    panel.append("li").text(`Minimum of Sale Price: $${priceMin}`);
+    panel.append("li").text(`Maximum of Sale Price: $${priceMax}`);
+};
 
 // event handler function for drop down menu
 function onSelect(){
     let nbhd = d3.select(this).property("value");
     makeNeighborhoodGraphs(nbhd);
+    
 }
 
 init();

@@ -18,6 +18,8 @@
       <!-- Our CSS -->
       <link rel="stylesheet" type="text/css" href="../static/css/style.css">
 
+      <!-- math.js -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"></script>
 
       <!-- Plotly -->
       <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
@@ -35,10 +37,28 @@
             <div id="overViewMap"></div>
         </div>
       </div>
-      
-      <div id="plot"></div>
 
-      <select id="selDataset"></select>
+      <div class="row">
+        <div class="col-md-6" style = "padding: 5%;">
+          <div class="card">
+            <div class="card-body">
+              <div class="well">
+                <h5>Neighborhood:</h5>
+                <select id="selDataset"></select>
+              </div>
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h5 class="panel-title">Summary</h5>
+                </div>
+                <div id="nbhd-data" class="panel-body"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = "col-md-6" style = "padding: 5%;">
+          <div id="plot"></div>
+        </div>
+      </div>
     
       <!-- Leaflet JS -->
       <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
@@ -52,6 +72,7 @@
       <!-- Graphs JavaScript -->
       <script type="text/javascript" src="{{url_for('static', filename='js/overviewMap.js')}}"></script>
       <script type="text/javascript" src="{{url_for('static', filename='js/lineGraph.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='js/makeHistogram.js')}}"></script>
 
       <!-- Render Graphs JavaScript -->
       <script type="text/javascript" src="{{url_for('static', filename='js/makeGraphs.js')}}"></script>
