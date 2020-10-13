@@ -86,13 +86,13 @@ function init(){
 };
 
 //function to build all graphs
-
 function makeNeighborhoodGraphs(nbhd){
     // pulls data from API and runs the functions to make the graphs
     d3.json(`/api/v1/${nbhd}`).then(function(data){
         buildLineGraph(data);
         makeSummary(data);
         makeHistogram(data);
+        createMarkers(data);
     });
 }
 
