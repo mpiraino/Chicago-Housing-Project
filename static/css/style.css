@@ -7,3 +7,8 @@
   width: 50%;  /* This means "100% of the width of its container", the .col-md-8 */
   margin: 0 auto;
 }
+#plot,
+body,
+html {
+  height: 100%;
+}
