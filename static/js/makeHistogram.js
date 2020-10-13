@@ -14,9 +14,9 @@ function makeHistogram(data){
       yaxis: {
         title: 'Count'
       },
-      width: 500,
-      height: 300,
+      // width: 500,
+      // height: 300,
     }
-    Plotly.newPlot('plot', data, layout);
+    Plotly.newPlot('histogram', data, layout);
 }
 
