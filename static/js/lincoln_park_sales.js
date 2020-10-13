@@ -32,30 +32,31 @@
       }
       
       function createMarkers(response) {
+
+      // Pull the "adresses" property off of response
+      var properties = response.filter(d=>d.Sale_Year==2019);
+      var pins = Math.min(properties.length,200)
       
-        // Pull the "adresses" property off of response
-         var properties = response.filter(d=>d.Sale_Year==2019);
-      
-        // Initialize an array to hold property markers
-        //var propertyMarkers = [];
-      
-        // Loop through the property array
-        //for (var index = 0; index < properties.length; index++) {
-         // var property = properties[index];
+      // Initialize an array to hold property markers
+      var propertyMarkers = [];
+     
+       // Loop through the property array
+       for (var index = 0; index < pins; index++) {
+         var property = properties[index];
+          
       
           // For each property, create a marker and bind a popup with the property's address
-          //var propertyMarker = L.marker([property.Latitude, property.Longitude]);
-            //.bindPopup("<h3>" + proterty.Address + property.Sale_Date + property.Sale_Price + property.Sale_Year + "<h3><h3>Capacity: " + property.capacity + "</h3>");
+         var propertyMarker = L.marker([property.Latitude, property.Longitude])
+            .bindPopup("<h3><h3>Address: " + property.Address + "</h3>" + "<h3><h3>Sale Date: " + property.Sale_Date + "<h3><h3>Sale Year: " + property.Sale_Year + "<h3><h3>Sale Price: $" + property.Sale_Price + "</h3>");
       
           // Add the marker to the propertymarker array
-          //propertyMarkers.push(propertyMarker);
-        //}
+          propertyMarkers.push(propertyMarker);
+        }
       
         // Create a layer group made from the property markers array, pass it into the createMap function
-       // createMap(L.layerGroup(propertyMarkers));
-      console.log(properties)
+        createMap(L.layerGroup(propertyMarkers));
       }
       
       
       // Perform an API call to the  API to get neighborhood information. Call createMarkers when complete
-      d3.json("/api/v1/lincoln+park", createMarkers);
+      d3.json("/api/v1/lincoln+park").then(createMarkers);
