@@ -11,44 +11,39 @@ var myMap = L.map("overViewMap", {
     maxZoom: 18,
     zoomOffset: -1,
     id: "mapbox/streets-v11",
-    accessToken: API_KEY
+    accessToken: API_Key
   }).addTo(myMap);
   
-  // Load in geojson data
-  var geoData = "data/housingDB.sqlite";
+
+
+  // Use this link to get the geojson data.
+var link = "data/Overview_price_age.geojson";
+
+// // Grabbing our GeoJSON data..
+// d3.json(link, function(data) {
+//   // Creating a GeoJSON layer with the retrieved data
+//   L.geoJson(data).addTo(myMap);
+// });
+
   
-  var geojson;
-  
-  // Grab data with d3
-  d3.json(geoData, function(data) {
+// //   // Grab data with d3
+  d3.json(link, function(data) {
   
     // Create a new choropleth layer
     geojson = L.choropleth(data, {
   
       // Define what  property in the features to use
-      valueProperty: "SalesPrice",
+      valueProperty: "Sale_Price",
   
       // Set color scale
       scale: ["#ffffb2", "#b10026"],
   
-      // Number of breaks in step range
-      steps: 10,
-  
-    //   // q for quartile, e for equidistant, k for k-means
-    //   mode: "q",
-    //   style: {
-    //     // Border color
-    //     color: "#fff",
-    //     weight: 1,
-    //     fillOpacity: 0.8
-    //   },
-  
       // Binding a pop-up to each layer
       onEachFeature: function(feature, layer) {
-        layer.bindPopup("Zip Code: " + feature.properties.ZIP + "<br>Sales Price:<br>" +
-          "$" + feature.properties.SalesPrice);
-      }
-    }).addTo(myMap);
+        layer.bindPopup("Neighborhood: " + feature.properties.coordinates + "<br>Sale Price:<br>" +
+          "$" + feature.properties.avg_price);
+    //   }
+    // // }).addTo(myMap);
   
     // Set up the legend
     var legend = L.control({ position: "bottomright" });
@@ -59,7 +54,7 @@ var myMap = L.map("overViewMap", {
       var labels = [];
   
       // Add min & max
-      var legendInfo = "<h1>Sale Price</h1>" +
+      var legendInfo = "<h1>Avg_Price</h1>" +
         "<div class=\"labels\">" +
           "<div class=\"min\">" + limits[0] + "</div>" +
           "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
@@ -76,7 +71,6 @@ var myMap = L.map("overViewMap", {
     };
   
     // Adding legend to the map
-    legend.addTo(myMap);
-  
+    ledgend.addTo(myMap);
+   
   });
-  
