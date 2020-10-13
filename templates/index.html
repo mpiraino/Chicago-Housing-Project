@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" style ="padding: 5%">
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
@@ -75,6 +75,9 @@
         crossorigin=""></script>
       <!-- D3 JavaScript -->
       <script src="https://d3js.org/d3.v6.min.js"></script>
+      <!-- Choropleth Library-->
+      <script type="text/javascript" src="{{url_for('static', filename='js/choropleth.js')}}"></script>
+
       <!-- API key -->
       <script type="text/javascript" src="{{url_for('static', filename='js/config.js')}}"></script>
 
@@ -85,6 +88,8 @@
 
       <!-- Render Graphs -->
       <script type="text/javascript" src="{{url_for('static', filename='js/makeGraphs.js')}}"></script>
+      <script type="text/javascript" src="{{url_for('static', filename='js/overViewMap.js')}}"></script>
+
 
 </body>
 
