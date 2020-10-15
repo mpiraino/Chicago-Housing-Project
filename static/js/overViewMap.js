@@ -19,7 +19,6 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 d3.json("/static/geo_data/Overview_price_age.json").then(function(data) {
   // Creating a GeoJSON layer with the retrieved data
 //   L.geoJson(data).addTo(myMap);
-    console.log(data);
 
   var choroplethLayer = L.choropleth(data, {
     valueProperty: 'ave_price',
